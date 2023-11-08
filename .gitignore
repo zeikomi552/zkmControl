@@ -1,0 +1,10 @@
+﻿################################################################################
+# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
+################################################################################
+
+/.vs
+/xkmControlTest/.vs
+/xkmControlTest/xkmControlTest/bin/Debug/net6.0-windows
+/xkmControlTest/xkmControlTest/obj
+/zkmControl/obj
+/zkmControl/bin/Debug/net6.0-windows
