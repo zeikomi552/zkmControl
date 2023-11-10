@@ -48,6 +48,7 @@ namespace zkmControl.ThumbControls
             this.BaseCanvas.Children.Add(this.Border);
         }
 
+
         #region Drag and Dropを有効にするフラグ[EnableDrag]依存プロパティ
         /// <summary>
         /// Drag and Dropを有効にするフラグ[EnableDrag]依存プロパティ
@@ -98,6 +99,59 @@ namespace zkmControl.ThumbControls
         {
             get { return (bool)GetValue(EnableDragProperty); }
             set { SetValue(EnableDragProperty, value); }
+        }
+        #endregion
+
+        #region 選択状態を示すフラグ(true:選択状態 false:非選択状態)[SelectedF]依存プロパティ
+        /// <summary>
+        /// 選択状態を示すフラグ(true:選択状態 false:非選択状態)[SelectedF]依存プロパティ
+        /// </summary>
+        [Category("カスタムプロパティ")]
+        [Browsable(true)]
+        public static readonly DependencyProperty SelectedFProperty =
+        DependencyProperty.Register(
+        "SelectedF",     // プロパティ名
+        typeof(bool),    // プロパティの型
+        typeof(ThumbTextBlock),  // コントロールの型
+        new FrameworkPropertyMetadata(   // メタデータ
+                    false,
+                    new PropertyChangedCallback(SelectedFChanged)));
+
+
+        /// <summary>
+        /// 依存プロパティが変更された際の処理
+        /// </summary>
+        /// <param name="obj">オブジェクト</param>
+        /// <param name="e">イベントオブジェクト</param>
+        private static void SelectedFChanged(
+        DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            ThumbTextBlock? userControl = obj as ThumbTextBlock;
+            if (userControl != null)
+            {
+                //////// 直接変更したいプロパティの処理を書く
+                bool newValue = (bool)e.NewValue;
+
+                if (newValue)
+                {
+                    userControl.Border.BorderBrush = Brushes.AliceBlue;
+                    userControl.Border.BorderThickness = new Thickness(3);
+                }
+                else
+                {
+                    userControl.Border.BorderBrush = null;
+                    userControl.Border.BorderThickness = new Thickness(0);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 依存プロパティのラッパー
+        /// </summary>
+        public bool SelectedF
+        {
+            get { return (bool)GetValue(SelectedFProperty); }
+            set { SetValue(SelectedFProperty, value); }
         }
         #endregion
 
@@ -239,8 +293,7 @@ namespace zkmControl.ThumbControls
 
                 if (thumb != null)
                 {
-                    thumb.Border.BorderBrush = Brushes.Red;
-                    thumb.Border.BorderThickness = new Thickness(0.5);
+                    thumb.SelectedF = true;
                 }
             }
             catch { }
@@ -258,11 +311,9 @@ namespace zkmControl.ThumbControls
             try
             {
                 ThumbTextBlock? thumb = sender as ThumbTextBlock;
-
                 if (thumb != null)
                 {
-                    thumb.Border.BorderBrush = null;
-                    thumb.Border.BorderThickness = new Thickness(0);
+                    thumb.SelectedF = false;
                 }
             }
             catch { }
