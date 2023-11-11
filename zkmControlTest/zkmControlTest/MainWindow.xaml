@@ -7,9 +7,10 @@
         xmlns:local="clr-namespace:zkmControlTest"
         xmlns:enum="clr-namespace:zkmControlTest.Common.Enums"
         xmlns:hlp="clr-namespace:zkmControlTest.Common.Helpers"
-        xmlns:ThumbControls="clr-namespace:zkmControl.ThumbControls;assembly=zkmControl" x:Class="zkmControlTest.MainWindow"
+        xmlns:ThumbControls="clr-namespace:zkmControl.ThumbControls;assembly=zkmControl"
+        x:Class="zkmControlTest.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1000" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -72,9 +73,11 @@
                 Margin="5" x:Name="inkcanvas" EditingMode="{Binding Text, ElementName=txtEditingModeSelect}"
                 >
             </InkCanvas>
-            <Canvas>
-                <ThumbControls:ThumbTextBlock x:Name="thumbTextBlock" EnableDrag="True" Text="aaa" FontSize="30" Canvas.Left="99" Canvas.Top="51"/>
-            </Canvas>
+            <Border BorderBrush="Black" BorderThickness="1" Width="600" Height="800">
+                <Canvas Width="600" Height="800">
+                    <ThumbControls:ThumbTextBlock x:Name="thumbTextBlock" EnableDrag="True" Text="aaa" FontSize="30" Canvas.Left="99" Canvas.Top="51"/>
+                </Canvas>
+            </Border>
         </Grid>
     </Grid>
 </Window>
