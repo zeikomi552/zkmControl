@@ -1,0 +1,80 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zkmControlTest"
+        xmlns:enum="clr-namespace:zkmControlTest.Common.Enums"
+        xmlns:hlp="clr-namespace:zkmControlTest.Common.Helpers"
+        xmlns:ThumbControls="clr-namespace:zkmControl.ThumbControls;assembly=zkmControl" x:Class="zkmControlTest.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Margin="5" Header="ペン設定">
+            <Grid>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="50" Margin="5" VerticalAlignment="Center" Text="タイプ:"/>
+                        <ComboBox Margin="5" Width="150" x:Name="cmbSample" SelectedValue="{Binding Text, ElementName=txtEditingModeSelect}">
+                            <ComboBox.ItemsSource>
+                                <Binding>
+                                    <Binding.Source>
+                                        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+                                            <ObjectDataProvider.MethodParameters>
+                                                <x:Type TypeName="InkCanvasEditingMode"/>
+                                            </ObjectDataProvider.MethodParameters>
+                                        </ObjectDataProvider>
+                                    </Binding.Source>
+                                </Binding>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+                        <TextBlock Visibility="Collapsed" x:Name="txtEditingModeSelect"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="50" VerticalAlignment="Center" Margin="5" Text="色:"/>
+                        <ComboBox Width="150" Margin="5" VerticalAlignment="Center" x:Name="cmbColor" SelectedValue="{Binding Text, ElementName=txtColorSelect}">
+                            <ComboBox.ItemsSource>
+                                <Binding>
+                                    <Binding.Source>
+                                        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+                                            <ObjectDataProvider.MethodParameters>
+                                                <x:Type TypeName="enum:ColorsEnum"/>
+                                            </ObjectDataProvider.MethodParameters>
+                                        </ObjectDataProvider>
+                                    </Binding.Source>
+                                </Binding>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+                        <TextBlock Visibility="Collapsed" VerticalAlignment="Center" x:Name="txtColorSelect"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="50" VerticalAlignment="Center" Margin="5" Text="サイズ:"/>
+                        <TextBox Margin="5"  Width="100" x:Name="txtStrokeSizeSelect" />
+                    </StackPanel>
+
+
+
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Column="1">
+            <InkCanvas
+                hlp:InkCanvasHelper.StrokeColor="{Binding Text, ElementName=txtColorSelect}" 
+                hlp:InkCanvasHelper.StrokeSize="{Binding Text, ElementName=txtStrokeSizeSelect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Margin="5" x:Name="inkcanvas" EditingMode="{Binding Text, ElementName=txtEditingModeSelect}"
+                >
+            </InkCanvas>
+            <Canvas>
+                <ThumbControls:ThumbTextBlock x:Name="thumbTextBlock" EnableDrag="True" Text="aaa" FontSize="30" Canvas.Left="99" Canvas.Top="51"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>

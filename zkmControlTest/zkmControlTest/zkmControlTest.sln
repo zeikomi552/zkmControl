@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zkmControlTest", "zkmControlTest.csproj", "{83C88D39-AE8C-4E1C-82EB-A63D8113EBBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zkmControl", "..\..\zkmControl\zkmControl.csproj", "{84680E26-3CFB-475C-9450-27F8B3ABF64C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83C88D39-AE8C-4E1C-82EB-A63D8113EBBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C88D39-AE8C-4E1C-82EB-A63D8113EBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C88D39-AE8C-4E1C-82EB-A63D8113EBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C88D39-AE8C-4E1C-82EB-A63D8113EBBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84680E26-3CFB-475C-9450-27F8B3ABF64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84680E26-3CFB-475C-9450-27F8B3ABF64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84680E26-3CFB-475C-9450-27F8B3ABF64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84680E26-3CFB-475C-9450-27F8B3ABF64C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0925607-D62C-48E5-9F8B-491F8D2326A0}
+	EndGlobalSection
+EndGlobal
